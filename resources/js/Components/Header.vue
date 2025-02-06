@@ -23,16 +23,14 @@
         </div>
         <!-- Mobile Menu -->
         <nav id="mobile-menu" class="hidden md:hidden bg-blue-900 text-white mt-5 pb-4 space-y-2">
-            <Link :href="route('jobs.index')" class="block px-4 py-2 hover:bg-blue-700">All Jobs</Link>
-            <a href="saved-jobs.html" class="block px-4 py-2 hover:bg-blue-700">Saved Jobs</a>
-            <a href="login.html" class="block px-4 py-2 hover:bg-blue-700">Login</a>
-            <a href="register.html" class="block px-4 py-2 hover:bg-blue-700">Register</a>
-            <a href="dashboard.html" class="block text-white hover:underline py-2">
-                <i class="fa fa-gauge mr-1"></i> Dashboard
-            </a>
-            <Link :href="route('jobs.create')" class="block px-4 py-2 bg-yellow-500 hover:bg-yellow-600 text-black">
-            <i class="fa fa-edit"></i> Create Job
-            </Link>
+            <NavLink :url="route('jobs.index')" :active="checkActiveRoute('jobs.index')" mobile>
+                All Jobs
+            </NavLink>
+            <NavLink url="saved-jobs.html" mobile>Saved Jobs</NavLink>
+            <NavLink url="login.html" mobile>Login</NavLink>
+            <NavLink url="register.html" mobile>Register</NavLink>
+            <NavLink url="dashboard.html" mobile icon="gauge">Dashboard</NavLink>
+            <ButtonLink :url="route('jobs.create')" icon="edit" block>Create Job</ButtonLink>
         </nav>
     </header>
 </template>
