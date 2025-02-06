@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\DB;
@@ -15,6 +16,8 @@ return new class extends Migration
         DB::table('job_listings')->truncate();
 
         Schema::table('job_listings', function (Blueprint $table) {
+            // Add user foreign key constraint
+            $table->foreignIdFor(User::class)->after('id')->constrained()->cascadeOnDelete();
             $table->integer('salary');
             $table->string('tags')->nullable();
             $table->enum('job_type', ['Full-Time', 'Part-Time', 'Contract', 'Temporary', 'Internship', 'Volunteer', 'On-Call'])->default('Full-Time');
@@ -40,7 +43,10 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('job_listings', function (Blueprint $table) {
+            $table->dropForeignIdFor(User::class);
+
             $table->dropColumn([
+                'user_id',
                 'salary',
                 'tags',
                 'job_type',
