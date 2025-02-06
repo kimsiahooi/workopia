@@ -13,8 +13,6 @@ return new class extends Migration
      */
     public function up(): void
     {
-        DB::table('job_listings')->truncate();
-
         Schema::table('job_listings', function (Blueprint $table) {
             // Add user foreign key constraint
             $table->foreignIdFor(User::class)->after('id')->constrained()->cascadeOnDelete();
