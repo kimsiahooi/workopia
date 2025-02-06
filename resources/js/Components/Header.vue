@@ -5,8 +5,10 @@
                 <Link :href="route('home')">Workopia</Link>
             </h1>
             <nav class="hidden md:flex items-center space-x-4">
-                <Link :href="route('jobs.index')"
-                    :class="`text-white hover:underline py-2 ${checkActiveRoute('jobs.index')}`">All Jobs</Link>
+                <NavLink :href="route('home')" :active="checkActiveRoute('home')">Home</NavLink>
+                <NavLink :href="route('jobs.index')" :active="checkActiveRoute('jobs.index')">
+                    All Jobs
+                </NavLink>
                 <a href="saved-jobs.html" class="text-white hover:underline py-2">Saved Jobs</a>
                 <a href="login.html" class="text-white hover:underline py-2">Login</a>
                 <a href="register.html" class="text-white hover:underline py-2">Register</a>
@@ -24,8 +26,7 @@
         </div>
         <!-- Mobile Menu -->
         <nav id="mobile-menu" class="hidden md:hidden bg-blue-900 text-white mt-5 pb-4 space-y-2">
-            <Link :href="route('jobs.index')"
-                :class="`block px-4 py-2 hover:bg-blue-700 ${checkActiveRoute('jobs.index')}`">All Jobs</Link>
+            <Link :href="route('jobs.index')" class="block px-4 py-2 hover:bg-blue-700">All Jobs</Link>
             <a href="saved-jobs.html" class="block px-4 py-2 hover:bg-blue-700">Saved Jobs</a>
             <a href="login.html" class="block px-4 py-2 hover:bg-blue-700">Login</a>
             <a href="register.html" class="block px-4 py-2 hover:bg-blue-700">Register</a>
@@ -43,14 +44,15 @@
 import { Link, usePage } from '@inertiajs/vue3';
 import { route } from 'ziggy-js';
 import { computed } from 'vue'
+import NavLink from './NavLink.vue';
 
 const page = usePage<{
-    ziggy: {
+    ziggy?: {
         current_route: string
     }
 }>()
 
-const computedCurrentRoute = computed(() => page.props.ziggy.current_route);
+const computedCurrentRoute = computed(() => page.props.ziggy?.current_route);
 
-const checkActiveRoute = (routeName: string) => computedCurrentRoute.value === routeName ? 'text-yellow-500 font-bold' : ''
+const checkActiveRoute = (routeName: string) => computedCurrentRoute.value === routeName
 </script>
