@@ -42,7 +42,7 @@ import { route } from 'ziggy-js';
 import { computed, ref } from 'vue'
 import NavLink from './NavLink.vue';
 import ButtonLink from './ButtonLink.vue';
-import type { PagePropsType } from '@/types/PagePropsType';
+import type { PagePropsType } from '@/Types/PagePropsType';
 
 const page = usePage<PagePropsType>()
 
