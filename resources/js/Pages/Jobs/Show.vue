@@ -1,9 +1,12 @@
 <template>
-    <h1>Show Job {{ id }}</h1>
+    <h1 class="text-2xl">{{ job.title }}</h1>
+    <p>{{ job.description }}</p>
 </template>
 
 <script setup lang="ts">
+import type { JobType } from '@/Types/JobType'
+
 defineProps<{
-    id: string
+    job: JobType
 }>();
 </script>
