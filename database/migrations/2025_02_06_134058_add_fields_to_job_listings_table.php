@@ -47,7 +47,6 @@ return new class extends Migration
             $table->dropForeignIdFor(User::class);
 
             $table->dropColumn([
-                'user_id',
                 'salary',
                 'tags',
                 'job_type',
