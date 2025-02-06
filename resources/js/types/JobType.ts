@@ -1,5 +1,5 @@
 export interface JobType {
-    uuid: string;
+    id: string;
     title: string;
     description: string;
 }
