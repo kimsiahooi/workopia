@@ -5,9 +5,8 @@
                 <Link :href="route('home')">Workopia</Link>
             </h1>
             <nav class="hidden md:flex items-center space-x-4">
-                <Link :href="route('jobs.index')" class="text-white hover:underline py-2" :class="{
-                    'text-yellow-500 font-bold': checkActiveRoute('jobs.index')
-                }">All Jobs</Link>
+                <Link :href="route('jobs.index')"
+                    :class="`text-white hover:underline py-2 ${checkActiveRoute('jobs.index')}`">All Jobs</Link>
                 <a href="saved-jobs.html" class="text-white hover:underline py-2">Saved Jobs</a>
                 <a href="login.html" class="text-white hover:underline py-2">Login</a>
                 <a href="register.html" class="text-white hover:underline py-2">Register</a>
@@ -52,5 +51,5 @@ const page = usePage<{
 
 const computedCurrentRoute = computed(() => page.props.ziggy.current_route);
 
-const checkActiveRoute = (routeName: string) => computedCurrentRoute.value === routeName
+const checkActiveRoute = (routeName: string) => computedCurrentRoute.value === routeName ? 'text-yellow-500 font-bold' : ''
 </script>
