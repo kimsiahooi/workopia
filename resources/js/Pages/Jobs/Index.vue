@@ -3,7 +3,7 @@
     <h1>Available Jobs</h1>
     <ul>
         <li v-if="jobs.length" v-for="job in jobs" :key="job.title">
-            <Link :href="route('jobs.show', job.id)">
+            <Link :href="route('jobs.show', job.uuid)">
             {{ job.title }} - {{ job.description }}
             </Link>
         </li>

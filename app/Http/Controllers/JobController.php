@@ -32,7 +32,9 @@ class JobController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->title);
+        Job::create($request->all());
+
+        return redirect()->route('jobs.index');
     }
 
     /**
