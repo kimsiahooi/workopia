@@ -1,20 +1,18 @@
 <template>
     <Head title="Job Listings" />
-    <h1>Available Jobs</h1>
-    <ul>
-        <li v-if="jobs.length" v-for="job in jobs" :key="job.title">
-            <Link :href="route('jobs.show', job.id)">
-            {{ job.title }} - {{ job.description }}
-            </Link>
-        </li>
-        <li v-else>No jobs available</li>
-    </ul>
+
+    <div v-if="jobs.length" class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+        <template v-for="job in jobs" :key="job">
+            <JobCard :job="job" />
+        </template>
+    </div>
+    <p v-else>No jobs available</p>
 </template>
 
 <script setup lang="ts">
-import { Head, Link } from '@inertiajs/vue3';
-import { route } from 'ziggy-js';
-import type { JobType } from '@/Types/JobType'
+import { Head } from '@inertiajs/vue3';
+import type { JobType } from '@/Types/JobType';
+import JobCard from '@/Components/JobCard.vue'
 
 defineProps<{
     jobs: JobType[]
