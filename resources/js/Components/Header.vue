@@ -42,12 +42,9 @@ import { route } from 'ziggy-js';
 import { computed, ref } from 'vue'
 import NavLink from './NavLink.vue';
 import ButtonLink from './ButtonLink.vue';
+import type { PagePropsType } from '@/types/PagePropsType';
 
-const page = usePage<{
-    ziggy?: {
-        current_route: string
-    }
-}>()
+const page = usePage<PagePropsType>()
 
 const menuInOpen = ref(false);
 
@@ -57,5 +54,5 @@ const toggleMenu = () => {
 
 const computedCurrentRoute = computed(() => page.props.ziggy?.current_route);
 
-const checkActiveRoute = (routeName: string) => computedCurrentRoute.value === routeName
+const checkActiveRoute = (routeName: string) => computedCurrentRoute.value === routeName;
 </script>
