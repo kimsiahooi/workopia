@@ -5,8 +5,8 @@
                 <Link :href="route('home')">Workopia</Link>
             </h1>
             <nav class="hidden md:flex items-center space-x-4">
-                <NavLink :href="route('home')" :active="checkActiveRoute('home')">Home</NavLink>
-                <NavLink :href="route('jobs.index')" :active="checkActiveRoute('jobs.index')">
+                <NavLink :url="route('home')" :active="checkActiveRoute('home')">Home</NavLink>
+                <NavLink :url="route('jobs.index')" :active="checkActiveRoute('jobs.index')">
                     All Jobs
                 </NavLink>
                 <a href="saved-jobs.html" class="text-white hover:underline py-2">Saved Jobs</a>
@@ -15,10 +15,7 @@
                 <a href="dashboard.html" class="text-white hover:underline py-2">
                     <i class="fa fa-gauge mr-1"></i> Dashboard
                 </a>
-                <Link :href="route('jobs.create')"
-                    class="bg-yellow-500 hover:bg-yellow-600 text-black px-4 py-2 rounded hover:shadow-md transition duration-300">
-                <i class="fa fa-edit"></i> Create Job
-                </Link>
+                <ButtonLink :url="route('jobs.create')" icon="edit">Create Job</ButtonLink>
             </nav>
             <button id="hamburger" class="text-white md:hidden flex items-center">
                 <i class="fa fa-bars text-2xl"></i>
@@ -45,6 +42,7 @@ import { Link, usePage } from '@inertiajs/vue3';
 import { route } from 'ziggy-js';
 import { computed } from 'vue'
 import NavLink from './NavLink.vue';
+import ButtonLink from './ButtonLink.vue';
 
 const page = usePage<{
     ziggy?: {
