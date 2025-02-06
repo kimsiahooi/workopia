@@ -1,7 +1,8 @@
+import "../css/app.css";
 import { createApp, h } from "vue";
 import { createInertiaApp } from "@inertiajs/vue3";
 import Layout from "@/Layouts/MainLayout.vue";
-import "../css/app.css";
+import { ZiggyVue } from "ziggy-js";
 
 createInertiaApp({
     resolve: (name) => {
@@ -10,9 +11,12 @@ createInertiaApp({
         page.default.layout = page.default.layout || Layout;
         return page;
     },
+    title: (title) =>
+        title ? `Workopia | ${title}` : "Workopia | Find and list jobs",
     setup({ el, App, props, plugin }) {
         createApp({ render: () => h(App, props) })
             .use(plugin)
+            .use(ZiggyVue)
             .mount(el);
     },
 });

@@ -28,7 +28,7 @@ class JobController extends Controller
      */
     public function create()
     {
-        //
+        return inertia('Jobs/Create');
     }
 
     /**
@@ -36,7 +36,7 @@ class JobController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request->title);
     }
 
     /**
@@ -44,7 +44,9 @@ class JobController extends Controller
      */
     public function show(string $id)
     {
-        //
+        return inertia('Jobs/Show', [
+            'id' => $id
+        ]);
     }
 
     /**

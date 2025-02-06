@@ -1,12 +1,10 @@
 <template>
 
     <Head title="Job Listings" />
-    <div>
-        <h1>Available Jobs</h1>
-        <ul v-if="jobs.length">
-            <li v-for="job in jobs" :key="job">{{ job }}</li>
-        </ul>
-    </div>
+    <h1>Available Jobs</h1>
+    <ul v-if="jobs.length">
+        <li v-for="job in jobs" :key="job">{{ job }}</li>
+    </ul>
 </template>
 
 <script setup lang="ts">
