@@ -18,6 +18,7 @@ return new class extends Migration
         Schema::table('job_listings', function (Blueprint $table) {
             // Add user foreign key constraint
             $table->foreignIdFor(User::class)->after('id')->constrained()->cascadeOnDelete();
+
             $table->integer('salary');
             $table->string('tags')->nullable();
             $table->enum('job_type', ['Full-Time', 'Part-Time', 'Contract', 'Temporary', 'Internship', 'Volunteer', 'On-Call'])->default('Full-Time');
