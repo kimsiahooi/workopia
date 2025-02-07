@@ -22,7 +22,7 @@
                 </span>
             </li>
             <li class="mb-2">
-                <strong>Tags:</strong> {{ formattedJobTags(job.tags) }}
+                <strong>Tags:</strong> <span class="capitalize">{{ formattedJobTags(job.tags) }}</span>
             </li>
         </ul>
         <Link :href="route('jobs.show', job.id)"
@@ -47,5 +47,5 @@ const formattedSalary = (salary: number) => new Intl.NumberFormat('en-US', {
     currency: 'USD',
 }).format(salary)
 
-const formattedJobTags = (tags: string) => tags.split(',').map(tag => tag.split(' ').map(t => capitalize(t)).join(' ')).join(', ');
+const formattedJobTags = (tags: string) => tags.split(',').join(', ');
 </script>
