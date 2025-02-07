@@ -3,9 +3,8 @@
         <label v-if="label" class="block text-gray-700" :for="id">
             {{ label }}
         </label>
-        <input
+        <textarea
             :id="id"
-            :type="type || 'text'"
             :name="name"
             class="w-full px-4 py-2 border rounded focus:outline-none"
             :class="{
@@ -13,6 +12,8 @@
             }"
             :placeholder="placeholder"
             v-model="model"
+            :cols="cols"
+            :rows="rows"
         />
         <p v-if="error" class="text-red-500 text-sm mt-1">
             {{ error }}
@@ -21,14 +22,15 @@
 </template>
 
 <script setup lang="ts">
-const model = defineModel();
+const model = defineModel<string>();
 
 defineProps<{
     id: string;
     name: string;
     label?: string;
-    type?: "text" | "number" | "file" | "checkbox" | "radio" | "tel" | "email";
     error?: string;
     placeholder?: string;
+    cols?: number | string;
+    rows?: number | string;
 }>();
 </script>

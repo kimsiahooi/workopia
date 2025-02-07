@@ -6,38 +6,25 @@
                 Job Info
             </h2>
 
-            <div class="mb-4">
-                <Text
-                    v-model="form.title"
-                    id="title"
-                    name="title"
-                    label="Job Title"
-                    :error="form.errors.title"
-                    placeholder="Software Engineer"
-                />
+            <Text
+                v-model="form.title"
+                id="title"
+                name="title"
+                label="Job Title"
+                :error="form.errors.title"
+                placeholder="Software Engineer"
+            />
 
-                <label class="block text-gray-700" for="description">
-                    Job Description
-                </label>
-                <textarea
-                    cols="30"
-                    rows="7"
-                    id="description"
-                    name="description"
-                    class="w-full px-4 py-2 border rounded focus:outline-none"
-                    :class="{
-                        'border-red-500': form.errors.title,
-                    }"
-                    placeholder="We are seeking a skilled and motivated Software Developer to join our growing development team..."
-                    v-model="form.description"
-                ></textarea>
-                <p
-                    v-if="form.errors.description"
-                    class="text-red-500 text-sm mt-1"
-                >
-                    {{ form.errors.description }}
-                </p>
-            </div>
+            <TextArea
+                v-model="form.description"
+                id="description"
+                name="description"
+                label="Job Description"
+                :error="form.errors.description"
+                placeholder="We are seeking a skilled and motivated Software Developer to join our growing development team..."
+                cols="30"
+                rows="7"
+            />
 
             <Text
                 v-model.number="form.salary"
@@ -49,29 +36,23 @@
                 placeholder="90000"
             />
 
-            <div class="mb-4">
-                <label class="block text-gray-700" for="requirements">
-                    Requirements
-                </label>
-                <textarea
-                    id="requirements"
-                    name="requirements"
-                    class="w-full px-4 py-2 border rounded focus:outline-none"
-                    placeholder="Bachelor's degree in Computer Science"
-                ></textarea>
-            </div>
+            <TextArea
+                v-model="form.requirements"
+                id="requirements"
+                name="requirements"
+                label="Requirements"
+                :error="form.errors.requirements"
+                placeholder="Bachelor's degree in Computer Science"
+            />
 
-            <div class="mb-4">
-                <label class="block text-gray-700" for="benefits">
-                    Benefits
-                </label>
-                <textarea
-                    id="benefits"
-                    name="benefits"
-                    class="w-full px-4 py-2 border rounded focus:outline-none"
-                    placeholder="Health insurance, 401k, paid time off"
-                ></textarea>
-            </div>
+            <TextArea
+                v-model="form.benefits"
+                id="benefits"
+                name="benefits"
+                label="Benefits"
+                :error="form.errors.benefits"
+                placeholder="Health insurance, 401k, paid time off"
+            />
 
             <Text
                 v-model="form.tags"
@@ -82,46 +63,34 @@
                 placeholder="development,coding,java,python"
             />
 
-            <div class="mb-4">
-                <label class="block text-gray-700" for="job_type">
-                    Job Type
-                </label>
-                <select
-                    id="job_type"
-                    name="job_type"
-                    class="w-full px-4 py-2 border rounded focus:outline-none"
-                    :class="{
-                        'border-red-500': form.errors.job_type,
-                    }"
-                    v-model="form.job_type"
-                >
-                    <option value="Full-Time">Full-Time</option>
-                    <option value="Part-Time">Part-Time</option>
-                    <option value="Contract">Contract</option>
-                    <option value="Temporary">Temporary</option>
-                    <option value="Internship">Internship</option>
-                    <option value="Volunteer">Volunteer</option>
-                    <option value="On-Call">On-Call</option>
-                </select>
-                <p
-                    v-if="form.errors.job_type"
-                    class="text-red-500 text-sm mt-1"
-                >
-                    {{ form.errors.job_type }}
-                </p>
-            </div>
+            <Select
+                label="Job Type"
+                id="job_type"
+                name="job_type"
+                v-model="form.job_type"
+                :error="form.errors.job_type"
+                :options="[
+                    { label: 'Full-Time', value: 'Full-Time' },
+                    { label: 'Part-Time', value: 'Part-Time' },
+                    { label: 'Contract', value: 'Contract' },
+                    { label: 'Temporary', value: 'Temporary' },
+                    { label: 'Internship', value: 'Internship' },
+                    { label: 'Volunteer', value: 'Volunteer' },
+                    { label: 'On-Call', value: 'On-Call' },
+                ]"
+            />
 
-            <div class="mb-4">
-                <label class="block text-gray-700" for="remote">Remote</label>
-                <select
-                    id="remote"
-                    name="remote"
-                    class="w-full px-4 py-2 border rounded focus:outline-none"
-                >
-                    <option value="false">No</option>
-                    <option value="true">Yes</option>
-                </select>
-            </div>
+            <Select
+                label="Remote"
+                id="remote"
+                name="remote"
+                v-model="form.remote"
+                :error="form.errors.remote"
+                :options="[
+                    { label: 'No', value: false },
+                    { label: 'Yes', value: true },
+                ]"
+            />
 
             <Text
                 v-model="form.address"
@@ -172,17 +141,14 @@
                 placeholder="Company name"
             />
 
-            <div class="mb-4">
-                <label class="block text-gray-700" for="company_description">
-                    Company Description
-                </label>
-                <textarea
-                    id="company_description"
-                    name="company_description"
-                    class="w-full px-4 py-2 border rounded focus:outline-none"
-                    placeholder="Company Description"
-                ></textarea>
-            </div>
+            <TextArea
+                v-model="form.company_description"
+                id="company_description"
+                name="company_description"
+                label="Company Description"
+                :error="form.errors.company_description"
+                placeholder="Company Description"
+            />
 
             <Text
                 v-model="form.company_website"
@@ -237,6 +203,8 @@
 import { useForm } from "@inertiajs/vue3";
 import { useTemplateRef } from "vue";
 import Text from "@/Components/Inputs/Text.vue";
+import TextArea from "@/Components/Inputs/TextArea.vue";
+import Select from "@/Components/Inputs/Select.vue";
 
 const companyLogo = useTemplateRef<HTMLInputElement>("company-logo");
 
