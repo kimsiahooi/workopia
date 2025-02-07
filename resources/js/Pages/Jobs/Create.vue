@@ -7,24 +7,15 @@
             </h2>
 
             <div class="mb-4">
-                <label class="block text-gray-700" for="title">Job Title</label>
-                <input
-                    id="title"
-                    type="text"
-                    name="title"
-                    class="w-full px-4 py-2 border rounded focus:outline-none"
-                    :class="{
-                        'border-red-500': form.errors.title,
-                    }"
-                    placeholder="Software Engineer"
+                <Text
                     v-model="form.title"
+                    id="title"
+                    name="title"
+                    label="Job Title"
+                    :error="form.errors.title"
+                    placeholder="Software Engineer"
                 />
-                <p v-if="form.errors.title" class="text-red-500 text-sm mt-1">
-                    {{ form.errors.title }}
-                </p>
-            </div>
 
-            <div class="mb-4">
                 <label class="block text-gray-700" for="description">
                     Job Description
                 </label>
@@ -48,18 +39,15 @@
                 </p>
             </div>
 
-            <div class="mb-4">
-                <label class="block text-gray-700" for="salary">
-                    Annual Salary
-                </label>
-                <input
-                    id="salary"
-                    type="number"
-                    name="salary"
-                    class="w-full px-4 py-2 border rounded focus:outline-none"
-                    placeholder="90000"
-                />
-            </div>
+            <Text
+                v-model.number="form.salary"
+                id="salary"
+                type="number"
+                name="salary"
+                label="Annual Salary"
+                :error="form.errors.salary"
+                placeholder="90000"
+            />
 
             <div class="mb-4">
                 <label class="block text-gray-700" for="requirements">
@@ -85,18 +73,14 @@
                 ></textarea>
             </div>
 
-            <div class="mb-4">
-                <label class="block text-gray-700" for="tags">
-                    Tags (comma-separated)
-                </label>
-                <input
-                    id="tags"
-                    type="text"
-                    name="tags"
-                    class="w-full px-4 py-2 border rounded focus:outline-none"
-                    placeholder="development,coding,java,python"
-                />
-            </div>
+            <Text
+                v-model="form.tags"
+                id="tags"
+                name="tags"
+                label="Tags (comma-separated)"
+                :error="form.errors.tags"
+                placeholder="development,coding,java,python"
+            />
 
             <div class="mb-4">
                 <label class="block text-gray-700" for="job_type">
@@ -139,68 +123,54 @@
                 </select>
             </div>
 
-            <div class="mb-4">
-                <label class="block text-gray-700" for="address">Address</label>
-                <input
-                    id="address"
-                    type="text"
-                    name="address"
-                    class="w-full px-4 py-2 border rounded focus:outline-none"
-                    placeholder="123 Main St"
-                />
-            </div>
+            <Text
+                v-model="form.address"
+                id="address"
+                name="address"
+                label="Address"
+                :error="form.errors.address"
+                placeholder="123 Main St"
+            />
 
-            <div class="mb-4">
-                <label class="block text-gray-700" for="city">City</label>
-                <input
-                    id="city"
-                    type="text"
-                    name="city"
-                    class="w-full px-4 py-2 border rounded focus:outline-none"
-                    placeholder="Albany"
-                />
-            </div>
+            <Text
+                v-model="form.city"
+                id="city"
+                name="city"
+                label="City"
+                :error="form.errors.city"
+                placeholder="Albany"
+            />
 
-            <div class="mb-4">
-                <label class="block text-gray-700" for="state">State</label>
-                <input
-                    id="state"
-                    type="text"
-                    name="state"
-                    class="w-full px-4 py-2 border rounded focus:outline-none"
-                    placeholder="NY"
-                />
-            </div>
+            <Text
+                v-model="form.state"
+                id="state"
+                name="state"
+                label="State"
+                :error="form.errors.state"
+                placeholder="NY"
+            />
 
-            <div class="mb-4">
-                <label class="block text-gray-700" for="zipcode">
-                    ZIP Code
-                </label>
-                <input
-                    id="zipcode"
-                    type="text"
-                    name="zipcode"
-                    class="w-full px-4 py-2 border rounded focus:outline-none"
-                    placeholder="12201"
-                />
-            </div>
+            <Text
+                v-model="form.zipcode"
+                id="zipcode"
+                name="zipcode"
+                label="ZIP Code"
+                :error="form.errors.zipcode"
+                placeholder="12201"
+            />
 
             <h2 class="text-2xl font-bold mb-6 text-center text-gray-500">
                 Company Info
             </h2>
 
-            <div class="mb-4">
-                <label class="block text-gray-700" for="company_name">
-                    Company Name
-                </label>
-                <input
-                    id="company_name"
-                    type="text"
-                    name="company_name"
-                    class="w-full px-4 py-2 border rounded focus:outline-none"
-                    placeholder="Company name"
-                />
-            </div>
+            <Text
+                v-model="form.company_name"
+                id="company_name"
+                name="company_name"
+                label="Company Name"
+                :error="form.errors.company_name"
+                placeholder="Company name"
+            />
 
             <div class="mb-4">
                 <label class="block text-gray-700" for="company_description">
@@ -214,64 +184,44 @@
                 ></textarea>
             </div>
 
-            <div class="mb-4">
-                <label class="block text-gray-700" for="company_website">
-                    Company Website
-                </label>
-                <input
-                    id="company_website"
-                    type="text"
-                    name="company_website"
-                    class="w-full px-4 py-2 border rounded focus:outline-none"
-                    placeholder="Enter website"
-                />
-            </div>
+            <Text
+                v-model="form.company_website"
+                id="company_website"
+                name="company_website"
+                label="Company Website"
+                :error="form.errors.company_website"
+                placeholder="Enter website"
+            />
 
-            <div class="mb-4">
-                <label class="block text-gray-700" for="contact_phone">
-                    Contact Phone
-                </label>
-                <input
-                    id="contact_phone"
-                    type="text"
-                    name="contact_phone"
-                    class="w-full px-4 py-2 border rounded focus:outline-none"
-                    placeholder="Enter phone"
-                />
-            </div>
+            <Text
+                v-model="form.contact_phone"
+                id="contact_phone"
+                name="contact_phone"
+                label="Contact Phone"
+                :error="form.errors.contact_phone"
+                placeholder="Enter phone"
+            />
 
-            <div class="mb-4">
-                <label class="block text-gray-700" for="contact_email">
-                    Contact Email
-                </label>
-                <input
-                    id="contact_email"
-                    type="email"
-                    name="contact_email"
-                    class="w-full px-4 py-2 border rounded focus:outline-none"
-                    placeholder="Email where you want to receive applications"
-                />
-            </div>
+            <Text
+                v-model="form.contact_email"
+                id="contact_email"
+                type="email"
+                name="contact_email"
+                label="Contact Email"
+                :error="form.errors.contact_email"
+                placeholder="Email where you want to receive applications"
+            />
 
-            <div class="mb-4">
-                <label class="block text-gray-700" for="company_logo">
-                    Company Logo
-                </label>
-                <input
-                    id="company_logo"
-                    type="file"
-                    name="company_logo"
-                    class="w-full px-4 py-2 border rounded focus:outline-none"
-                    ref="company-logo"
-                    @change="changeLogoHandler"
-                />
-                <p
-                    v-if="form.errors.company_logo"
-                    class="text-red-500 text-sm mt-1"
-                >
-                    {{ form.errors.company_logo }}
-                </p>
-            </div>
+            <Text
+                v-model="form.company_logo"
+                id="company_logo"
+                type="file"
+                name="company_logo"
+                label="Company Logo"
+                :error="form.errors.company_logo"
+                ref="company-logo"
+                @change="changeLogoHandler"
+            />
 
             <button
                 type="submit"
@@ -286,12 +236,15 @@
 <script setup lang="ts">
 import { useForm } from "@inertiajs/vue3";
 import { useTemplateRef } from "vue";
+import Text from "@/Components/Inputs/Text.vue";
 
 const companyLogo = useTemplateRef<HTMLInputElement>("company-logo");
 
 const form = useForm<{
     title: string;
     description: string;
+    salary: number;
+    tags: string;
     job_type:
         | "Full-Time"
         | "Part-Time"
@@ -300,12 +253,38 @@ const form = useForm<{
         | "Internship"
         | "Volunteer"
         | "On-Call";
+    remote: boolean;
+    requirements: string;
+    benefits: string;
+    address: string;
+    city: string;
+    state: string;
+    zipcode: string;
+    contact_email: string;
+    contact_phone: string;
+    company_name: string;
+    company_description: string;
     company_logo: File;
+    company_website: string;
 }>({
     title: "",
     description: "",
+    salary: null,
+    tags: "",
     job_type: "Full-Time",
+    remote: false,
+    requirements: "",
+    benefits: "",
+    address: "",
+    city: "",
+    state: "",
+    zipcode: "",
+    contact_email: "",
+    contact_phone: "",
+    company_name: "",
+    company_description: "",
     company_logo: null,
+    company_website: "",
 });
 
 const changeLogoHandler = () => {
