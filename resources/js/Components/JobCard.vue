@@ -36,16 +36,15 @@
 import { Link } from '@inertiajs/vue3';
 import { route } from 'ziggy-js'
 import type { JobType } from '@/Types/JobType';
-import { capitalize } from 'lodash-es'
+import { useFormatCurrency } from '@/Composables/useFormattedCurrency';
 
 defineProps<{
     job: JobType
 }>()
 
-const formattedSalary = (salary: number) => new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
-}).format(salary)
+const formatCurrency = useFormatCurrency();
+
+const formattedSalary = (salary: number) => formatCurrency.format(salary);
 
 const formattedJobTags = (tags: string) => tags.split(',').join(', ');
 </script>
